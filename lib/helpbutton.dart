@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dataRead.dart';
 
+AppBar sAppBar = AppBar(
+  backgroundColor: Color.fromRGBO(112, 13, 25, 1),
+  //title: Text("First Page"),
+);
+
 Container cc = Container(
     width: 200,
     height: 200,
@@ -67,7 +72,7 @@ Column regColumn(String shint, String hint, var val, TextInputType type, int k,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        SizedBox(height: 10),
+        SizedBox(height: 5),
         /*
         Align(
             alignment: Alignment.centerLeft,
@@ -81,7 +86,7 @@ Column regColumn(String shint, String hint, var val, TextInputType type, int k,
             */
         Container(
           width: 250,
-          height: 50,
+          height: 40,
           padding: EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -96,7 +101,22 @@ Column regColumn(String shint, String hint, var val, TextInputType type, int k,
             controller: control,
             keyboardType: type,
             decoration: InputDecoration(
-                hintText: hint, border: InputBorder.none, labelText: shint),
+              hintText: hint,
+              border: InputBorder.none,
+              labelText: shint,
+              labelStyle: TextStyle(fontSize: 15),
+              hintStyle: TextStyle(),
+              contentPadding:
+                  const EdgeInsets.only(left: 14.0, bottom: 18.0, top: 0),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
             onChanged: (value) {
               if (value == null || value.isEmpty) {
                 return 'Bu alanı doldurmak zorunludur';

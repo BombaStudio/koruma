@@ -60,6 +60,26 @@ class page_call extends StatelessWidget {
                       alignment: MainAxisAlignment.center,
                       children: <Widget>[
                         MaterialButton(
+                          onPressed: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text(''),
+                              content: const Text(
+                                  'Yardım istediğinize emin misiniz?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Hayır'),
+                                ),
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('Evet'),
+                                ),
+                              ],
+                            ),
+                          ),
+                          /*
                           onPressed: () {
                             helpers = random.nextInt(100);
                             Navigator.push(
@@ -67,6 +87,7 @@ class page_call extends StatelessWidget {
                                 new MaterialPageRoute(
                                     builder: (context) => new page_call()));
                           },
+                          */
                           textColor: Colors.white,
                           child: cc,
                           padding: EdgeInsets.all(0),

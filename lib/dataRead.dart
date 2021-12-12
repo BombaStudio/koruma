@@ -12,6 +12,8 @@ String onayS = "";
 
 String isim = null;
 String soyisim = null;
+String il = null;
+String ilce = null;
 String ikametgah = null;
 
 String dogum = null;

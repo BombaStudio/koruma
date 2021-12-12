@@ -6,11 +6,7 @@ class register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /*
-      appBar: AppBar(
-        title: Text("First Page"),
-      ),
-      */
+      appBar: sAppBar,
       body: Center(
           child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(112, 13, 25, 1)),
@@ -34,8 +30,10 @@ class register extends StatelessWidget {
                             dogum, TextInputType.datetime, 1, null),
                         regColumn("Cep Telefonunuz:", "Örneğin: 0543657****",
                             tel, TextInputType.phone, 1, null),
-                        //regColumn("Yaşadığınız İl:", "Örneğin: İstanbul", "", textinput),
-                        //regColumn("Yaşadığınız İlçe:", "Örneğin: Bağcılar", ""),
+                        regColumn("Yaşadığınız İl:", "Örneğin: İstanbul", il,
+                            TextInputType.text, 1, null),
+                        regColumn("Yaşadığınız İlçe:", "Örneğin: Bağcılar",
+                            ilce, TextInputType.text, 1, null),
                         regColumn(
                             "İkametgah(kapı,bina,daire no vs):",
                             "Örneğin: A Sitesi, B Blok, Daire C...",

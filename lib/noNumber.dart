@@ -24,10 +24,7 @@ class numberO extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(112, 13, 25, 1),
-        //title: Text("First Page"),
-      ),
+      appBar: sAppBar,
       body: Center(
           child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(112, 13, 25, 1)),
@@ -38,30 +35,43 @@ class numberO extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: const EdgeInsets.only(left: 40.0, right: 40.0),
+                    margin: const EdgeInsets.only(left: 25.0, right: 20.0),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            'SMS DOĞRULAMA',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color.fromRGBO(238, 238, 238, 1),
-                                fontFamily: 'Red Hat Text',
-                                fontSize: 24,
-                                letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1),
-                          ),
-                        ),
+                            margin: const EdgeInsets.only(left: 15, top: 20),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.message_outlined,
+                                  color: Colors.white,
+                                  size: 40,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    'SMS DOĞRULAMA',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(238, 238, 238, 1),
+                                        fontFamily: 'Red Hat Text',
+                                        fontSize: 24,
+                                        letterSpacing:
+                                            0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1),
+                                  ),
+                                ),
+                              ],
+                            )),
                         regColumn("Gelen SMS Kodunu Giriniz...", "", onay,
                             TextInputType.number, 0, _coo),
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(
+                              left: 10, top: 0, bottom: 0),
                           child: Text(
-                            'Doğrulama için kalan süre: 02:47',
+                            "",
+                            /*'Doğrulama için kalan süre: 02:47',*/
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color.fromRGBO(229, 229, 229, 1),
@@ -73,11 +83,34 @@ class numberO extends StatelessWidget {
                                 height: 1),
                           ),
                         ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            foregroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(112, 13, 25, 1)),
+                          ),
+                          onPressed: () {
+                            _coo.value.text.isNotEmpty
+                                ? pa(context, int.parse(_coo.value.text))
+                                : onay = 0;
+                          },
+                          child: const Text(
+                            'Kodu tekrar gönder',
+                            style: TextStyle(
+                              color: Color.fromRGBO(112, 13, 25, 1),
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                         Container(
+                          margin: const EdgeInsets.only(left: 15, top: 15),
                           child: Row(
                             children: <Widget>[
+                              /*
                               Text(
-                                "Uyhulama Kullanım Şartlarını Kabul Ediyorum.",
+                                "Uygulama Kullanım Şartlarını Kabul Ediyorum.",
                                 style: TextStyle(color: Colors.white),
                               ),
                               Checkbox(
@@ -92,6 +125,7 @@ class numberO extends StatelessWidget {
                                           builder: (context) => new numberO()));
                                 },
                               )
+                              */
                             ],
                           ),
                         ),
@@ -126,6 +160,10 @@ class numberO extends StatelessWidget {
                               ),
                             ),
                           ),
+                        ),
+                        Text(
+                          "Kayıt olduktan sonra uygulama şartlarını kabul etmiş olursunuz",
+                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
