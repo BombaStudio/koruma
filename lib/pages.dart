@@ -5,6 +5,7 @@ import 'package:testapp/registerPage.dart';
 import 'helpbutton.dart';
 import 'dataRead.dart';
 import 'loginPage.dart';
+import 'mapDemo.dart';
 
 int i = 0;
 

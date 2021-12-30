@@ -33,6 +33,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_svg: ^1.0.0
   auto_size_text: ^3.0.0
+  flutter_geofire: ^2.0.1
+  firebase: ^9.0.2
+  firebase_core: ^1.10.6
 
 dev_dependencies:
   flutter_test:

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946007124204",
+    "project_id": "coolcaller-c90a1",
+    "storage_bucket": "coolcaller-c90a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946007124204:android:3cc18740319d3123729dc9",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946007124204-2ab5fi0btalotl4spelm2npe0linb3bi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testapp",
+            "certificate_hash": "90d174db781c2f222a5e655bcd23f56c3d2f2d7f"
+          }
+        },
+        {
+          "client_id": "946007124204-rlrn4ie9o9r0pb0d9oodtbg8d1vis6kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY_aG3DhZF8TRjVWG-1EvGTRfXzUvChLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946007124204-rlrn4ie9o9r0pb0d9oodtbg8d1vis6kt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
