@@ -2,7 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:testapp/getLocation.dart';
+import 'package:testapp/theBildirim.dart';
 import 'pages.dart';
 import 'dataRead.dart';
 import 'helpbutton.dart';
@@ -11,6 +15,17 @@ import 'dart:math';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  //getLocation().checkLocPerm();
+  try {
+    // Obtain shared preferences.
+    final prefs = await SharedPreferences.getInstance();
+    isim = prefs.getString('isim');
+  } catch (e) {
+    isim = "asdad";
+  }
+  const channel = MethodChannel('koruma/channel');
+  startService(channel, isim);
+
   runApp(MyApp());
 }
 

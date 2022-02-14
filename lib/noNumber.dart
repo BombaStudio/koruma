@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'helpbutton.dart';
 import 'package:flutter/material.dart';
 import 'dataRead.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class numberO extends StatelessWidget {
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   void ona() {
     if (onay == null) {
       onayS = "";
@@ -14,11 +18,37 @@ class numberO extends StatelessWidget {
 
   TextEditingController _coo =
       TextEditingController(text: onay == null ? "" : onay.toString());
-  void pa(BuildContext context, int a) {
+  void pa(BuildContext context, int a) async {
     a != null ? onay = a : onay = null;
     print(onay);
+    //_register(context);
+    await auth.verifyPhoneNumber(
+      phoneNumber: '+90 534 066 0885', //tel.toString(),
+      timeout: const Duration(seconds: 60),
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await auth.signInWithCredential(credential);
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        if (e.code == 'invalid-phone-number') {
+          print('senin koyacağın telefon numarasına sokim' + telNo.toString());
+        }
+      },
+      codeSent: (String verificationId, int resendToken) async {
+        String smsCode = 'xxxx';
+        // Create a PhoneAuthCredential with the code
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+            verificationId: verificationId, smsCode: smsCode);
+
+        // Sign the user in (or link) with the credential
+        await auth.signInWithCredential(credential);
+        //Navigator.of(context).popUntil((route) => route.isFirst);
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+    /*
     Navigator.push(
         context, new MaterialPageRoute(builder: (context) => new numberO()));
+    */
   }
 
   @override
@@ -146,7 +176,7 @@ class numberO extends StatelessWidget {
                                   foregroundColor:
                                       MaterialStateProperty.all<Color>(
                                           Color.fromRGBO(112, 13, 25, 1))),
-                              onPressed: () {
+                              onPressed: () async {
                                 _coo.value.text.isNotEmpty
                                     ? pa(context, int.parse(_coo.value.text))
                                     : onay = 0;
@@ -161,10 +191,12 @@ class numberO extends StatelessWidget {
                             ),
                           ),
                         ),
+                        /*
                         Text(
                           "Kayıt olduktan sonra uygulama şartlarını kabul etmiş olursunuz",
                           style: TextStyle(color: Colors.white),
                         ),
+                        */
                       ],
                     ),
                   )
@@ -184,5 +216,16 @@ class numberO extends StatelessWidget {
         ),
       )),
     );
+  }
+
+  void _register(context) async {
+    //_auth.createUserWithEmailAndPassword(email: "", password: "");
+    /*
+    final AuthCredential credential = PhoneAuthProvider.getCredential(
+      verificationId: "",
+      smsCode: "",
+    );
+    */
+    //_auth.signInWithCredential();
   }
 }

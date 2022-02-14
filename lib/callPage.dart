@@ -27,8 +27,7 @@ class page_call extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => new register()));
+              Navigator.of(context).popUntil((route) => route.isFirst);
             },
             icon: Icon(
               Icons.menu,
@@ -73,7 +72,24 @@ class page_call extends StatelessWidget {
                                   child: const Text('Hayır'),
                                 ),
                                 TextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  onPressed: () => showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                      title: const Text(''),
+                                      content: Text(
+                                          'Yardım isteğiniz $helpers kişiye iletildi'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).popUntil(
+                                                (route) => route.isFirst);
+                                          },
+                                          child: const Text('İptal'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                   child: const Text('Evet'),
                                 ),
                               ],

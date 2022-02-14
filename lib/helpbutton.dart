@@ -4,12 +4,14 @@ import 'dataRead.dart';
 
 AppBar sAppBar = AppBar(
   backgroundColor: Color.fromRGBO(112, 13, 25, 1),
+  elevation: 0,
   //title: Text("First Page"),
 );
 
 Container cc = Container(
     width: 200,
     height: 200,
+    margin: EdgeInsets.only(bottom: 25),
     decoration: BoxDecoration(
         //border: Border.all(),
         ),
@@ -20,7 +22,7 @@ Container cc = Container(
         padding: const EdgeInsets.all(0.0),
         child: new Text(
           'YARDIM İSTE !',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
     )
@@ -43,7 +45,8 @@ Container logoC = Container(
         //border: Border.all(),
         ),
     child: new CircleAvatar(
-      backgroundImage: new AssetImage("assets/images/button.png"),
+      backgroundImage: new AssetImage("assets/images/kiks.png"),
+      backgroundColor: Color.fromRGBO(0, 0, 0, 0),
       radius: 80.0,
       /*
       child: new Container(
@@ -118,8 +121,11 @@ Column regColumn(String shint, String hint, var val, TextInputType type, int k,
               ),
             ),
             onChanged: (value) {
+              //print(value);
+              val = value.toString();
+              /*
               if (value == null || value.isEmpty) {
-                return 'Bu alanı doldurmak zorunludur';
+                print('Bu alanı doldurmak zorunludur');
               }
               return null;
               if (k == 0) {
@@ -127,8 +133,53 @@ Column regColumn(String shint, String hint, var val, TextInputType type, int k,
               } else {
                 val = value.toString();
               }
+              print(val);
+              */
             },
           ),
         )
       ],
     );
+Container menuC(BuildContext context, IconData ic, String text, var re) =>
+    new Container(
+        margin: EdgeInsets.only(bottom: 25),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(112, 13, 25, 1),
+        ),
+        child: TextButton(
+            onPressed: () {
+              if (re != null) {
+                Navigator.push(
+                    context, new MaterialPageRoute(builder: (context) => re));
+              }
+            },
+            child: Center(
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Icon(
+                      ic,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                  Container(
+                      width: 250,
+                      padding:
+                          EdgeInsets.only(left: 5, right: 2, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color.fromRGBO(0, 0, 0, 0.3),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        text,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ))
+                ],
+              ),
+            )));

@@ -1,5 +1,9 @@
 import 'dart:math';
-import 'package:firebase/firebase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+//import 'package:firebase/firebase.dart';
 
 Random random = new Random();
 int helpers = random.nextInt(100);
@@ -7,7 +11,7 @@ bool okudu = false;
 int telNo = null;
 
 int tc = null;
-int tel = null;
+String tel = null;
 int onay;
 String onayS = "";
 
